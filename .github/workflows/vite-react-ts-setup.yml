@@ -30,7 +30,13 @@ jobs:
 
       - name: Update package.json scripts
         run: |
-          npx json -I -f package.json -e 'this.scripts.prettier="prettier \\"src/**/*.{js,jsx,ts,tsx,css,scss,md}\\" --write"; this.scripts["format:check"]="yarn prettier -- --check"; this.scripts["format:write"]="yarn prettier -- --write"; this.scripts["types:check"]="tsc --noEmit --pretty"; this.scripts.lint="eslint --ext .js,.jsx,.ts,.tsx src --no-error-on-unmatched-pattern"; this.scripts["lint:fix"]="eslint --ext .js,.jsx,.ts,.tsx src --fix --no-error-on-unmatched-pattern"; this.scripts.fix="yarn format:write && yarn lint:fix";'
+          echo $(jq '.scripts.prettier="prettier \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\" --write"' package.json) > package.json
+          echo $(jq '.scripts["format:check"]="yarn prettier -- --check"' package.json) > package.json
+          echo $(jq '.scripts["format:write"]="yarn prettier -- --write"' package.json) > package.json
+          echo $(jq '.scripts["types:check"]="tsc --noEmit --pretty"' package.json) > package.json
+          echo $(jq '.scripts.lint="eslint --ext .js,.jsx,.ts,.tsx src --no-error-on-unmatched-pattern"' package.json) > package.json
+          echo $(jq '.scripts["lint:fix"]="eslint --ext .js,.jsx,.ts,.tsx src --fix --no-error-on-unmatched-pattern"' package.json) > package.json
+          echo $(jq '.scripts.fix="yarn format:write && yarn lint:fix"' package.json) > package.json
 
       - name: Commit and Push
         run: |
