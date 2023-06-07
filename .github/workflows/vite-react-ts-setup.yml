@@ -28,12 +28,6 @@ jobs:
         run: |
           yarn add --dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser husky lint-staged
 
-      - name: Copy ESLint and Prettier Configuration
-        run: |
-          cp .eslintrc.json .eslintrc.json
-          cp .prettierrc .prettierrc
-          cp lint-staged.config.json lint-staged.config.json
-
       - name: Update package.json scripts
         run: |
           npx json -I -f package.json -e 'this.scripts.prettier="prettier \\"src/**/*.{js,jsx,ts,tsx,css,scss,md}\\" --write"; this.scripts["format:check"]="yarn prettier -- --check"; this.scripts["format:write"]="yarn prettier -- --write"; this.scripts["types:check"]="tsc --noEmit --pretty"; this.scripts.lint="eslint --ext .js,.jsx,.ts,.tsx src --no-error-on-unmatched-pattern"; this.scripts["lint:fix"]="eslint --ext .js,.jsx,.ts,.tsx src --fix --no-error-on-unmatched-pattern"; this.scripts.fix="yarn format:write && yarn lint:fix";'
