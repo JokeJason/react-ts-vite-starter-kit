@@ -8,3 +8,4 @@ Template for building web applications with React + Vite. It includes following 
 * IDE support
   * vscode
   * WebStorm
+* Auto update dependencies via renovate bot
