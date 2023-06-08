@@ -1,8 +1,8 @@
 module.exports = {
-  '*.json': ['npm run format:check'],
+  '*.json': ['yarn format:check'],
   '*.{ts,tsx,js,jsx}': [
-    'npm run lint',
-    "bash -c 'npm run types:check'",
-    'npm run format:check',
+    'yarn lint',
+    "bash -c 'yarn types:check'",
+    'yarn format:check',
   ],
 };
