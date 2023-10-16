@@ -1,11 +1,3 @@
-# react-ts-vite-starter-kit
-Template for building web applications with React + Vite. It includes following features:
-* React
-* TypeScript
-* Vite
-* ESLint
-* Prettier
-* IDE support
-  * vscode
-  * WebStorm
-* Auto update dependencies via renovate bot
+# CatSearch
+
+A basic web app that allow users to search and browse cats by reed type from TheCATApi
